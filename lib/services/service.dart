@@ -3,24 +3,24 @@ import 'package:apiapp/config.dart';
 import 'package:apiapp/models/data.dart';
 import 'package:http/http.dart' as http;
 
-class RocketService {
-  static Future<Rocket?> getRocket() async {
+class DataService {
+  static Future<Data?> getData() async {
     final response = await http.get(
-      Uri.parse("${Config.backendurl}rockets/5e9d0d95eda69973a809d1ec"),
+      Uri.parse(Config.backendurl),
     );
 
     if (response.statusCode == 200) {
-      return Rocket.fromJSON(jsonDecode(response.body));
+      return Data.fromJSON(jsonDecode(response.body));
     }
     return null;
   }
 
-  static Future<List<Rocket>?> getRockets() async {
-    final response = await http.get(Uri.parse("${Config.backendurl}rockets"));
+  static Future<List<Data>?> getDataall() async {
+    final response = await http.get(Uri.parse(Config.backendurl));
 
     if (response.statusCode == 200) {
-      return jsonDecode(response.body).map<Rocket>((data) {
-        return Rocket.fromJSON(data);
+      return jsonDecode(response.body).map<Data>((data) {
+        return Data.fromJSON(data);
       }).toList();
     }
     return null;

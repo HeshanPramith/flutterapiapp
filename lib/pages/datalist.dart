@@ -18,8 +18,8 @@ class Datalist extends StatelessWidget {
           ),
         ),
       ),
-      body: FutureBuilder<List<Rocket>?>(
-        future: RocketService.getRockets(),
+      body: FutureBuilder<List<Data>?>(
+        future: DataService.getDataall(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(
@@ -28,15 +28,14 @@ class Datalist extends StatelessWidget {
               ),
             );
           } else if (snapshot.hasData) {
-            List<Rocket>? rockets = snapshot.data;
-            print(snapshot.data);
+            List<Data>? dataall = snapshot.data;
             return Container(
               padding: const EdgeInsets.all(
                 10,
               ),
-              child: rockets == null
+              child: dataall == null
                   ? const Text('Empty')
-                  : RocketListView(rockets: rockets),
+                  : DataListView(dataall: dataall),
             );
           }
 
