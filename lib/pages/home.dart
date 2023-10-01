@@ -1,22 +1,19 @@
+import 'package:apiapp/pages/datalist.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
+  static const routeName = '/home';
   const Home({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Data List',
+          'Data List API',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         actions: <Widget>[
@@ -28,14 +25,47 @@ class _HomeState extends State<Home> {
             onPressed: () {},
           ),
         ],
-        backgroundColor: Colors.black,
         elevation: 4.0,
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'Your Home Screen Content Goes Here',
-          style: TextStyle(color: Colors.black),
+      body: Center(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'API Data Tester By Heshan',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Text(
+                  'Your Home Screen Content Goes Here',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(Datalist.routeName);
+                  },
+                  child: const Text('Go to API Data List Page'),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

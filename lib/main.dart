@@ -1,3 +1,4 @@
+import 'package:apiapp/routes.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/home.dart';
@@ -13,11 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo API',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.red,
       ),
-      home: const Home(),
+      initialRoute: Home.routeName,
+      routes: routes,
     );
   }
 }
