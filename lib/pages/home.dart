@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
         title: const Text(
           'Data List API',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 16,
           ),
         ),
         actions: [

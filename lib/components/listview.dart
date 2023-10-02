@@ -3,10 +3,9 @@ import 'package:apiapp/models/data.dart';
 import 'package:flutter/material.dart';
 
 class DataListView extends StatelessWidget {
-  late final List<Data> dataall;
+  final List<Data> dataall;
 
-  // ignore: prefer_const_constructors_in_immutables
-  DataListView({super.key, required this.dataall});
+  const DataListView({super.key, required this.dataall});
 
   @override
   Widget build(BuildContext context) {

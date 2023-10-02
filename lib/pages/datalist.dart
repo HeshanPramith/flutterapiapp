@@ -17,6 +17,7 @@ class Datalist extends StatelessWidget {
             fontSize: 16,
           ),
         ),
+        centerTitle: true,
       ),
       body: FutureBuilder<List<Data>?>(
         future: DataService.getDataall(),
