@@ -1,9 +1,12 @@
 import 'package:apiapp/pages/datalist.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
   static const routeName = '/home';
-  const Home({super.key});
+  final Function(bool)? toggleDatkmode;
+  final bool? isDark;
+  const Home({Key? key, this.toggleDatkmode, this.isDark}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,18 +15,11 @@ class Home extends StatelessWidget {
         title: const Text(
           'Data List API',
           style: TextStyle(
-            color: Colors.white,
             fontSize: 18,
           ),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          ),
+        actions: [
+          CupertinoSwitch(value: isDark ?? false, onChanged: toggleDatkmode)
         ],
         elevation: 4.0,
         centerTitle: true,
@@ -40,7 +36,6 @@ class Home extends StatelessWidget {
                 const Text(
                   'API Data Tester By Heshan',
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: 20,
                   ),
                 ),
@@ -50,7 +45,6 @@ class Home extends StatelessWidget {
                 const Text(
                   'Your Home Screen Content Goes Here',
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: 14,
                   ),
                 ),
