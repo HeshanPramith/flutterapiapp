@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "745348996019",
+    "project_id": "tjapp-2d078",
+    "storage_bucket": "tjapp-2d078.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745348996019:android:285e3c9120c2968e1d09c6",
+        "android_client_info": {
+          "package_name": "com.example.apiapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCihbhifGwQN9E0811EGDZHyNfO_x4qtOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

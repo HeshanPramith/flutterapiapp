@@ -9,3 +9,8 @@ class MyTheme {
     primarySwatch: Colors.green,
   );
 }
+
+const TextStyle switchStyle = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.normal,
+);
