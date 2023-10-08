@@ -51,8 +51,6 @@ class _FirebaseclouddataState extends State<Firebaseclouddata> {
         ),
       );
     } catch (e) {
-      print('Error deleting user: $e');
-
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.red,
@@ -74,7 +72,7 @@ class _FirebaseclouddataState extends State<Firebaseclouddata> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Firestore Cloud Data',
+            'Cloud API Data',
             style: TextStyle(
               fontSize: 16,
             ),
@@ -131,13 +129,26 @@ class _FirebaseclouddataState extends State<Firebaseclouddata> {
                     ),
                   ),
                   const Spacer(),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const AddUserScreen(),
-                      ));
-                    },
-                    child: const Text('Add New User'),
+                  SizedBox(
+                    width: 150.0,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const AddUserScreen(),
+                          ),
+                        );
+                      },
+                      child: const Row(
+                        children: [
+                          Icon(Icons.add),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text('Add New User'),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -179,6 +190,7 @@ class _FirebaseclouddataState extends State<Firebaseclouddata> {
                           final maritalStatus =
                               userData['maritalStatus'] ?? 'N/A';
                           final nationality = userData['nationality'] ?? 'N/A';
+                          final image = userData['image'] ?? 'N/A';
 
                           return Padding(
                             padding: const EdgeInsets.only(
@@ -201,6 +213,7 @@ class _FirebaseclouddataState extends State<Firebaseclouddata> {
                                       maritalStatus: maritalStatus,
                                       nationality: nationality,
                                       dob: dob,
+                                      image: image,
                                     ),
                                   ),
                                 );
@@ -211,12 +224,21 @@ class _FirebaseclouddataState extends State<Firebaseclouddata> {
                                     vertical: 8.0,
                                   ),
                                   child: ListTile(
-                                    leading: const CircleAvatar(
-                                      backgroundColor:
-                                          Color.fromARGB(255, 14, 184, 8),
-                                      child: Icon(
-                                        Icons.person,
-                                        color: Colors.white,
+                                    leading: ClipRRect(
+                                      borderRadius: BorderRadius.circular(100),
+                                      child: Image.network(
+                                        image,
+                                        width: 50,
+                                        height: 50,
+                                        errorBuilder: (BuildContext context,
+                                            Object error,
+                                            StackTrace? stackTrace) {
+                                          return const Icon(
+                                            Icons.error_outline,
+                                            size: 50,
+                                            color: Colors.red,
+                                          );
+                                        },
                                       ),
                                     ),
                                     title: Column(

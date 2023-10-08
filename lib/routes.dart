@@ -33,6 +33,7 @@ final Map<String, WidgetBuilder> routes = {
         maritalStatus: '',
         nationality: '',
         documentId: '',
+        image: '',
       ),
   EditUserDetailScreen.routeName: (_) => EditUserDetailScreen(
         fname: '',
@@ -45,5 +46,6 @@ final Map<String, WidgetBuilder> routes = {
         maritalStatus: '',
         nationality: '',
         documentId: '',
+        image: '',
       ),
 };

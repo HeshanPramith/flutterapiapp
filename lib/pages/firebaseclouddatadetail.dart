@@ -17,6 +17,7 @@ class UserDetailPage extends StatefulWidget {
   final String location;
   final String maritalStatus;
   final String nationality;
+  final String image;
 
   const UserDetailPage({
     super.key,
@@ -30,6 +31,7 @@ class UserDetailPage extends StatefulWidget {
     required this.location,
     required this.maritalStatus,
     required this.nationality,
+    required this.image,
   });
 
   @override
@@ -89,32 +91,13 @@ class _UserDetailPageState extends State<UserDetailPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  child: const Text("Edit User"),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EditUserDetailScreen(
-                          documentId: widget.documentId,
-                          fname: widget.fname,
-                          lname: widget.lname,
-                          mobile: widget.mobile,
-                          email: widget.email,
-                          country: widget.country,
-                          dob: widget.dob,
-                          location: widget.location,
-                          maritalStatus: widget.maritalStatus,
-                          nationality: widget.nationality,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                const Icon(
-                  Icons.person_search_outlined,
-                  size: 80.0,
-                  color: Colors.red,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.network(
+                    widget.image,
+                    width: 100,
+                    height: 100,
+                  ),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -163,6 +146,45 @@ class _UserDetailPageState extends State<UserDetailPage> {
                   ),
                 if (widget.nationality != 'N/A')
                   Text('Nationality: ${widget.nationality}'),
+                const SizedBox(
+                  height: 30.0,
+                ),
+                SizedBox(
+                  width: 130.0,
+                  child: ElevatedButton(
+                    child: const Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.edit_note_outlined),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text('Edit User'),
+                      ],
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditUserDetailScreen(
+                            documentId: widget.documentId,
+                            fname: widget.fname,
+                            lname: widget.lname,
+                            mobile: widget.mobile,
+                            email: widget.email,
+                            country: widget.country,
+                            dob: widget.dob,
+                            location: widget.location,
+                            maritalStatus: widget.maritalStatus,
+                            nationality: widget.nationality,
+                            image: widget.image,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
